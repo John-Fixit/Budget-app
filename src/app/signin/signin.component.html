@@ -1,0 +1,16 @@
+<div class="col-md-5 shadow mx-auto">
+    <div class="card-header py-2 text-center text-light fs-3 fw-bold bg-primary rounded">Log into your Budget App</div>
+    <div class="forms p-2">
+            <small *ngIf="errorDey" class="text-danger fw-700 alert alert-danger text-center form-control is-invalid">{{message}}</small>
+        <div class="form-floating">
+            <input type="text" class="form-control my-3" placeholder="Email" [(ngModel)]="email">
+            <label for="" class="fw-bold">Email</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control my-3" placeholder="Email" [(ngModel)]="password">
+            <label for="" class="fw-bold">Password</label>
+        </div>
+        <div class="p-2">Don't you have an account already? <a href="" routerLink="/">Sign up</a> here</div>
+        <button class="btn btn-primary rounded-pill w-100" (click)="loginUser()">Log in</button>
+    </div>
+</div>

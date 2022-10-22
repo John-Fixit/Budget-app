@@ -1,0 +1,24 @@
+
+.cursorPointer{
+    cursor: pointer;
+}
+.budgetChecklist{
+    background-color: #0D6EFD;
+}
+.displayResult{
+    height: 31vh;
+    width: 100%;
+    overflow: auto;
+}
+.displayResult::-webkit-scrollbar{
+    width: 5px;
+    height: 100%;
+
+}
+.displayResult::-webkit-scrollbar-track{
+    box-shadow: inset -6px 6px 6px rgb(152, 175, 211);
+    border-radius: 5px;
+}
+.displayResult::-webkit-scrollbar-thumb{
+    background-color: rgb(81, 84, 233);
+}

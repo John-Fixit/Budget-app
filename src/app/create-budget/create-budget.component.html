@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<div class="row col-12">
+    <div class="col-lg-5 mx-auto shadow-sm my-4">
+        <div class="card-header fs-3 fw-500 bg-primary text-center rounded text-light">Add Budget</div>
+        <div class="text-center py-2">
+            <small class="text-success fw-bold alert alert-success form-control is-valid" *ngIf="errorSuccess==true">{{message}}</small>
+            <small class="text-danger fw-bold alert alert-danger form-control is-invalid" *ngIf="errorSuccess==false">{{message}}</small>
+        </div>
+        <div class="input-forms p-2">
+            <div class="input_div my-2">
+                <label for="" class="fw-bold">Budget Label:</label>
+                <div class="form-floating">
+                    <input type="text" placeholder="Budget Name" class="form-control" [(ngModel)]="budgetName">
+                    <label for="">Budget Name</label>
+                </div>
+            </div>
+            <div class="input_div my-2">
+                <label for="" class="fw-bold">Amount:</label>
+                <div class="form-floating">
+                    <input type="number" placeholder="Budget Name" class="form-control" [(ngModel)]="budgetAmt">
+                    <label for="">Budget Amount</label>
+                </div>
+            </div>
+            <div class="input_div my-2">
+                <label for="" class="fw-bold">Deadline:</label>
+                <div class="form-floating">
+                    <input type="date" placeholder="Budget" class="form-control" [(ngModel)]="budgetDeadline">
+                    <label for="">Budget Deadline</label>
+                </div>
+            </div>
+            <button class="button btn" (click)="addNewBudget()"> Add New Budget
+            </button>
+        </div>
+    </div>
+
+</div>
