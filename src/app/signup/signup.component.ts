@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BudgetService } from '../services/budget.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -14,11 +15,12 @@ export class SignupComponent implements OnInit {
   public message: string = ""
   public userArray: any = []
   constructor(
-   public route : Router
+   public route : Router,
+   public budgetService: BudgetService
   ) { }
 
   ngOnInit(): void {
-   this.userArray = JSON.parse(localStorage['allUser'])
+   this.userArray = this.budgetService.getUser()
   }
 
   signupFunc(){

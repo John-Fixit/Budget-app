@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BudgetService } from '../services/budget.service';
 @Component({
   selector: 'app-create-budget',
   templateUrl: './create-budget.component.html',
@@ -19,15 +20,14 @@ export class CreateBudgetComponent implements OnInit {
   public allUser: any = []
   public errorSuccess: any = undefined
   constructor(
-    public router : Router
+    public router : Router,
+    public budgetService: BudgetService
   ) { 
   }
 
   ngOnInit(): void {
-    if(localStorage['allUser']){
-      this.allUser = JSON.parse(localStorage['allUser'])
-    }
-    let authUser = JSON.parse(localStorage['authUser'])
+      this.allUser = this.budgetService.getUser()
+    let authUser = this.budgetService.loginUser()
     
     this.userIndex = this.allUser.findIndex((user:any, i:any)=> user.email==authUser.email)
 

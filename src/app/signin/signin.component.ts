@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BudgetService } from '../services/budget.service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -12,11 +13,12 @@ export class SigninComponent implements OnInit {
   public errorDey:boolean = false
   public userArray:any = []
   constructor(
-    public route : Router
+    public route : Router,
+    public budgetService: BudgetService
   ) { }
 
   ngOnInit(): void {
-      this.userArray = JSON.parse(localStorage["allUser"])
+      this.userArray = this.budgetService.getUser()
   }
 
   loginUser(){

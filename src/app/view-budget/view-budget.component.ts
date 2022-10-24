@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faArrowRight, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { BudgetService } from '../services/budget.service';
 @Component({
   selector: 'app-view-budget',
   templateUrl: './view-budget.component.html',
@@ -22,13 +22,14 @@ export class ViewBudgetComponent implements OnInit {
     public allUser: any = []
   constructor(
     public budgetRoute: ActivatedRoute,
-    public route : Router
+    public route : Router,
+    public budgetService: BudgetService
   ) { }
 
   ngOnInit(): void {
     this.budgetIndex = this.budgetRoute.snapshot.params['id'];
     if(localStorage['allUser']){
-      this.allUser = JSON.parse(localStorage['allUser'])
+      this.allUser = this.budgetService.getUser()
     }
     let loginUser = JSON.parse(localStorage['authUser'])
     this.userIndex = this.allUser.findIndex((user:any, i:any)=> user.email == loginUser.email)

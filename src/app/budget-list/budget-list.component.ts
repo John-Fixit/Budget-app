@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faCheck, faUser, faContactCard as contactIcon, faTimes as unMarked} from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { BudgetService } from '../services/budget.service';
 @Component({
   selector: 'app-budget-list',
   templateUrl: './budget-list.component.html',
@@ -22,15 +23,16 @@ export class BudgetListComponent implements OnInit {
   public budgetArray: any = []
 
   constructor(
-  public route: Router
+  public route: Router,
+  public budgetService : BudgetService
   ) { }
 
   ngOnInit(): void {
     if(localStorage['allUser']){
-        this.allUser = JSON.parse(localStorage['allUser'])
+        this.allUser = this.budgetService.getUser()
     }
     if(localStorage['authUser']){
-      let loginUser = JSON.parse(localStorage['authUser'])
+      let loginUser = this.budgetService.loginUser()
       this.authUser = this.allUser.find((user:any, i:any)=> user.email == loginUser.email)
       this.userIndex = this.allUser.findIndex((user:any, i:any)=> user.email == loginUser.email)
       
